@@ -11,9 +11,6 @@ var canPlaceFlowers = function(flowerbed, n) {
         if(!cantPlant) {
             flowerbed[i] = 1; 
             newFlowersPlanted++;
-            if(newFlowersPlanted >= n) {
-                return true; 
-            }
         }
     }
 
