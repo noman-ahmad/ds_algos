@@ -1,11 +1,22 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        k = 0 
-        for i in range(0, len(nums), 1):
-            if nums[i] == val:
-                k += 1 
-                nums[i] = -1 
-
-        nums.sort(reverse=True); 
+        k = 0  
+        left = 0 
+        right = len(nums) - 1
+        while left <= right:
+            if nums[left] != val and nums[right] == val:
+                left += 1
+            elif nums[left] == val and nums[right] != val:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+                k += 1
+            elif nums[right] == val and nums[left] == val: 
+                right -= 1
+                k += 1
+            else:
+                left += 1
+                
+        print(nums, k)
 
         return len(nums) - k
